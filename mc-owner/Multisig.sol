@@ -3,7 +3,6 @@ pragma solidity 0.4.24;
 
 contract MinimumViableMultisig {
 
-  mapping(bytes32 => bool) isExecuted;
   address[] public owners;
 
   mapping (address => bool) isOwner;
@@ -23,29 +22,29 @@ contract MinimumViableMultisig {
   {
     bytes32 transactionHash = getTransactionHash(to, data);
     address lastOwner = address(0);
+
     for (uint256 i = 0; i < owners.length; i++) {
-      require(
-        owners[i] == ecrecover(transactionHash, v[i], r[i], s[i])
-      );
+      require(owners[i] == ecrecover(transactionHash, v[i], r[i], s[i]));
     }
 
     require(executeDelegateCall(to, data));
-
-    isExecuted[transactionHash] = true;
   }
 
   function getTransactionHash(
     address to,
-    bytes data,
+    bytes data
   )
     public
     view
     returns (bytes32)
   {
-    return keccak256(abi.encodePacked(byte(0x19), this, to, value, data, operation));
+    return keccak256(this, to, value, data, operation);
   }
 
-  function executeDelegateCall(address to, bytes data)
+  function executeDelegateCall(
+    address to,
+    bytes data
+  )
     internal
     returns (bool success)
   {
