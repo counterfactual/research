@@ -17,7 +17,7 @@ contract Commitments {
   ) public {
     require(this.balance == expectedBal);
     Registry registry = Registry(registryAddr);
-    address rootA = registry.resolve(rootCA);
+    address rootA = registry.resolver(rootCA);
     RootNonce rootCO = RootNonce(rootA);
     require(rootCO.finalizedNonce() == rootExpected);
     for (uint256 i = 0; i < refundA; i++) {
@@ -32,10 +32,10 @@ contract Commitments {
     uint256 rootExpected
   ) public {
     Registry registry = Registry(registryA);
-    address rootA = registry.resolve(rootCA);
+    address rootA = registry.resolver(rootCA);
     RootNonce rootCO = RootNonce(rootA);
     require(rootCO.finalizedNonce() == rootExpected);
-    address paymentA = registry.resolve(paymentCA);
+    address paymentA = registry.resolver(paymentCA);
     Payment paymentCO = Payment(paymentA);
     require(paymentCO.isFinal());
     for (uint256 i = 0; i < paymentCO.length; i++) {
