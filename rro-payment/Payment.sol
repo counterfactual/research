@@ -1,14 +1,16 @@
 /*
-receiver read-only payment channel
+on-chain payment channel
+implementation choices mirror RROPayment where applicable
 
 untested
 */
-contract RROPayment {
+contract Payment {
 
   address[2] owners;
-  uint256[2] payments;
+  uint256 balance; // amount of money owners[0] owns
   uint256 deposit; // amount of money owners[0] deposited
   uint256 finalizesAt = 0;
+  uint256 nonce;
 
   constructor(address[2] _owners) {
     owners = _owners;
@@ -22,24 +24,26 @@ contract RROPayment {
 
   function startDispute() {
     require(finalizesAt == 0);
+    balance = deposit;
     finalizesAt = now + 100;
   }
 
   function progressDispute(
-    uint256 idx, uint256 amount,
-    uint8 v, bytes32 r, bytes32 s
+    uint256 _balance, uint256 _nonce,
+    uint8[2] v, bytes32[2] r, bytes32[2] s
   ) {
-    bytes32 digest = keccak256(abi.encode(idx, amount));
-    require(owners[idx] == ecrecover(digest, v, r, s));
-    payments[idx] = amount;
+    require(_nonce > nonce);
+    bytes32 digest = keccak256(abi.encode(_balance, _nonce));
+    for (uint256 i = 0; i < owners.length; i++) {
+      require(owners[i] == ecrecover(digest, v[i], r[i], s[i]));
+    }
+    balance = _balance;
+    nonce = _nonce;
   }
 
-  function finalize() {
+  function finalizeExit() {
     require(now > finalizesAt);
-    uint256 balDiff = payments[0] - payments[1];
-    uint256 bal = deposit + balDiff;
-
-    owners[0].transfer(bal);
+    owners[0].transfer(balance);
     owners[1].transfer(this.balance);
   }
 
