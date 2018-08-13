@@ -1,4 +1,4 @@
-pragma solidity ^0.4.17;
+pragma solidity 0.5;
 
 uint256 TIMEOUT = 100;
 
@@ -25,7 +25,7 @@ contract MetachannelPayment {
   ) public {
     bytes32 digest = keccak256(abi.encode(intermediary, owners));
     require(intermediary == ecrecover(digest, v[i], r[i], s[i]));
-    intermediary = 0;
+    intermediary = 0x0;
   }
 
   function update(
