@@ -1,8 +1,8 @@
-pragma solidity ^0.4.17;
-
-uint256 TIMEOUT = 100;
+pragma solidity 0.4.24;
 
 contract Payment {
+
+  uint256 TIMEOUT = 100;
 
   address[] public owners;
   uint256[] public balances;
@@ -17,12 +17,12 @@ contract Payment {
     finalizesAt = block.number + TIMEOUT;
   }
 
-  function update(uint8[] v, bytes32[] r, bytes32[] s, uint256 _balances, uint256 _nonce) public {
+  function update(uint8[] v, bytes32[] r, bytes32[] s, uint256[] _balances, uint256 _nonce) public {
 
     require(!isFinal);
     require(_nonce > nonce);
 
-    bytes32 digest = keccak256(_balances, _nonce);
+    bytes32 digest = keccak256(abi.encode(_balances, _nonce));
 
     for (uint256 i = 0; i < owners.length; i++) {
       require(owners[i] == ecrecover(digest, v[i], r[i], s[i]));
@@ -37,6 +37,10 @@ contract Payment {
   function finalize () public {
     require(block.number >= finalizesAt);
     isFinal = true;
+  }
+
+  function numOwners() public view returns(uint256) {
+    return owners.length;
   }
 
 }

@@ -21,8 +21,8 @@ contract Commitments {
     address paymentA = registry.resolver(paymentCA);
     Payment paymentCO = Payment(paymentA);
     require(paymentCO.isFinal() || now > expiryBlock);
-    for (uint256 i = 0; i < paymentCO.length; i++) {
-      paymentCO.owners(i).transfer(paymentCO.balance(i));
+    for (uint256 i = 0; i < paymentCO.numOwners(); i++) {
+      paymentCO.owners(i).transfer(paymentCO.balances(i));
     }
   }
 

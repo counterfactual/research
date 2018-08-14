@@ -15,13 +15,13 @@ contract Commitments {
     address[] refundA,
     uint256[] refundAmt
   ) public {
-    require(this.balance == expectedBal);
+    require(address(this).balance == expectedBal);
     Registry registry = Registry(registryAddr);
     address rootA = registry.resolver(rootCA);
     RootNonce rootCO = RootNonce(rootA);
     require(rootCO.finalizedNonce() == rootExpected);
-    for (uint256 i = 0; i < refundA; i++) {
-      refundA[i].transfer(refundAmt);
+    for (uint256 i = 0; i < refundA.length; i++) {
+      refundA[i].transfer(refundAmt[i]);
     }
   }
 
@@ -38,8 +38,8 @@ contract Commitments {
     address paymentA = registry.resolver(paymentCA);
     Payment paymentCO = Payment(paymentA);
     require(paymentCO.isFinal());
-    for (uint256 i = 0; i < paymentCO.length; i++) {
-      paymentCO.owners(i).transfer(paymentCO.balance(i));
+    for (uint256 i = 0; i < paymentCO.numOwners(); i++) {
+      paymentCO.owners(i).transfer(paymentCO.balances(i));
     }
   }
 
