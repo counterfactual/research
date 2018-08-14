@@ -1,11 +1,11 @@
-pragma solidity ^0.4.17;
+pragma solidity 0.4.24;
 
 contract Registry {
   mapping(bytes32 => address) public resolver;
 
   function deploy(bytes code) public {
     address newContract;
-    bytes32 cfAddress = keccak256(msg.sender, code);
+    bytes32 cfAddress = keccak256(abi.encode(msg.sender, code));
 
     require(resolver[cfAddress] == 0x0);
 
