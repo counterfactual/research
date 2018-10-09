@@ -1,0 +1,3 @@
+- get rid of nonce
+- channels => lower resolution
+- block futures + contracts - either channel succeeds or you get paid X amount
