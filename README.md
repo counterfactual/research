@@ -1,5 +1,6 @@
 # research
 
+- batched-wesolowski: batching expensive modular exponentiations in RSA accumulator proof generation
 - mvsc: simple counterfactually instantiated payment channel
 - create2: replace some uses of the registry with CREATE2
 - hash-ladder-nonce: make nonces incrementable via hash revelation instead of ecrecover
