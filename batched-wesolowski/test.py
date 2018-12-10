@@ -105,15 +105,15 @@ final_accumulator = pow(3, total_exponent)
 
 print("computing half products...")
 
-B0 = pow(3, fast_prod(factors[0:n//2]))
-B1 = pow(3, fast_prod(factors[n//2:n]))
+B0 = pow(3, fast_prod(factors[n//2:n]))
+B1 = pow(3, fast_prod(factors[0:n//2]))
 
 print("computing quarter products...")
 
-B00 = pow(B1, fast_prod(factors[n//4:n//2]))
-B01 = pow(B1, fast_prod(factors[0:n//4]))
-B10 = pow(B0, fast_prod(factors[n//2+n//4:n]))
-B11 = pow(B0, fast_prod(factors[n//2:n//2+n//4]))
+B00 = pow(B0, fast_prod(factors[n//4:n//2]))
+B01 = pow(B0, fast_prod(factors[0:n//4]))
+B10 = pow(B1, fast_prod(factors[n//2+n//4:n]))
+B11 = pow(B1, fast_prod(factors[n//2:n//2+n//4]))
 
 for i in range(0, n//4):
     print(f"proving {i}")
