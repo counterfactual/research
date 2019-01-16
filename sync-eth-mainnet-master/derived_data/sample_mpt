@@ -1,0 +1,84 @@
+<64 6f> : 'verb'
+<64 6f 67> : 'puppy'
+<64 6f 67 65> : 'coin'
+<68 6f 72 73 65> : 'stallion'
+
+rootHash: [ <16>, hashA ]
+hashA:    [ <>, <>, <>, <>, hashB, <>, <>, <>, hashC, <>, <>, <>, <>, <>, <>, <>, <> ]
+hashC:    [ <20 6f 72 73 65>, 'stallion' ]
+hashB:    [ <00 6f>, hashD ]
+hashD:    [ <>, <>, <>, <>, <>, <>, hashE, <>, <>, <>, <>, <>, <>, <>, <>, <>, 'verb' ]
+hashE:    [ <17>, hashF ]
+hashF:    [ <>, <>, <>, <>, <>, <>, hashG, <>, <>, <>, <>, <>, <>, <>, <>, <>, 'puppy' ]
+hashG:    [ <35>, 'coin' ]
+
+rootHash = <5991bb8c6514148a29db676a14ac506cd2cd5775ace63c30a4fe457715e9ac84> : [
+    <16>, bd3ee507e6c67cfefca98f84be47c1bbc009315fabc4405db4ba32190374572a ]
+
+hashA = <bd3ee507e6c67cfefca98f84be47c1bbc009315fabc4405db4ba32190374572a> : [
+  <>, <>,  <>, <>,
+  <94a9f95bd89698e4da1812e0518053813b4d5b87caaf6b3c6fa57e9e50c0ff68>,
+  <>, <>, <>,
+  [ <Buffer 20 6f 72 73 65>, <Buffer 73 74 61 6c 6c 69 6f 6e> ],
+  <>, <>, <>, <>, <>, <>, <>, <> ]
+
+hashB = <Buffer 94 a9 f9 5b d8 96 98 e4 da 18 12 e0 51 80 53 81 3b 4d 5b 87 ca af 6b 3c 6f a5 7e 9e 50 c0 ff 68> '=' [ <Buffer 00 6f>,
+  <Buffer d4 3b 87 fd cd 42 17 01 3c cc 92 d0 46 62 e1 2d 36 e4 cc 25 dc 69 00 77 cd 82 1a 19 56 fc 3e 36> ]
+
+5991bb8c6514148a29db676a14ac506cd2cd5775ace63c30a4fe457715e9ac84
+<Buffer 01 4f 07 ed 95 e2 e0 28 80 4d 91 5e 0d bd 4e d4 51 e3 94 e1 ac fd 29 e4 63 c1 1a 06 0b 2d de f7> '=' [ <Buffer 20 64 6f>, <Buffer 76 65 72 62> ]
+
+<Buffer 77 9d b3 98 6d d4 f3 84 16 bf de 49 75 0e f7 b1 3c 6e cb 3e 22 21 62 0b ca d9 26 7e 94 60 4d 36> '=' [ <Buffer 00 64 6f>,
+  [ <Buffer >,
+    <Buffer >,
+    <Buffer >,
+    <Buffer >,
+    <Buffer >,
+    <Buffer >,
+    [ <Buffer 37>, <Buffer 70 75 70 70 79> ],
+    <Buffer >,
+    <Buffer >,
+    <Buffer >,
+    <Buffer >,
+    <Buffer >,
+    <Buffer >,
+    <Buffer >,
+    <Buffer >,
+    <Buffer >,
+    <Buffer 76 65 72 62> ] ]
+<Buffer d4 3b 87 fd cd 42 17 01 3c cc 92 d0 46 62 e1 2d 36 e4 cc 25 dc 69 00 77 cd 82 1a 19 56 fc 3e 36> '=' [ <Buffer >,
+  <Buffer >,
+  <Buffer >,
+  <Buffer >,
+  <Buffer >,
+  <Buffer >,
+  [ <Buffer 17>,
+    [ <Buffer >,
+      <Buffer >,
+      <Buffer >,
+      <Buffer >,
+      <Buffer >,
+      <Buffer >,
+      [Array],
+      <Buffer >,
+      <Buffer >,
+      <Buffer >,
+      <Buffer >,
+      <Buffer >,
+      <Buffer >,
+      <Buffer >,
+      <Buffer >,
+      <Buffer >,
+      <Buffer 70 75 70 70 79> ] ],
+  <Buffer >,
+  <Buffer >,
+  <Buffer >,
+  <Buffer >,
+  <Buffer >,
+  <Buffer >,
+  <Buffer >,
+  <Buffer >,
+  <Buffer >,
+  <Buffer 76 65 72 62> ]
+<Buffer ef 7b 2f e2 0f 5d 2c 30 c4 6a d4 d8 3c 39 81 1b cb f1 72 1a ef 2e 80 5c 0e 10 79 47 32 08 88 b6> '=' [ <Buffer 00 64 6f>,
+  <Buffer d4 3b 87 fd cd 42 17 01 3c cc 92 d0 46 62 e1 2d 36 e4 cc 25 dc 69 00 77 cd 82 1a 19 56 fc 3e 36> ]
