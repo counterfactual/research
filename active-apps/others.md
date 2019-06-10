@@ -1,0 +1,2 @@
+- explicit merkelization (celer)
+- explicitly put all active apps on chain (magmo)
