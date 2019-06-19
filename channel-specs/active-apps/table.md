@@ -1,15 +1,15 @@
 Active app mechanisms
 
-|        Field         |             cf-now             |            cf-next             |                        nitro                         | cf-future |
-| -------------------- | ------------------------------ | ------------------------------ | ---------------------------------------------------- | --------- |
-| Supported Assets     | User-defined                   | ETH,ERC-20                     | ETH,ERC-20                                           | ?         |
-| State Deposit Holder | Multisig                       | Multisig                       | Adjudicator                                          | ?         |
-| AAL Stored In        | Implicit                       | Part of LB                     | Part of ledger channel                               | ?         |
-| AAL Dispute Ends By  | Uninstall/Root nonce finalizes | LB outcome finalizes           | ledger channel sends                                 | ?         |
-| AAL <-> AA           | AA checks Uninstall/Root nonce | AA checks LB outcome           | Adjudicator checks that app channel checks is funded | ?         |
-| Inactive App effect  | Uninstall/Root nonce fails     | LB outcome check fails         | app channel is unfunded                              | ?         |
-| UB stored in         | FB                             | Part of LB                     | part of ledger channel                               | ?         |
-| UB effect            | FB executes effect             | LB executes partial (?) effect | ledger channel sends                                 | ?         |
+|        Field         |             cf-now             |            cf-next             |                     nitro                     | cf-future |
+| -------------------- | ------------------------------ | ------------------------------ | --------------------------------------------- | --------- |
+| Supported Assets     | User-defined                   | ETH,ERC-20                     | ETH,ERC-20                                    | ?         |
+| State Deposit Holder | Multisig                       | Multisig                       | Adjudicator                                   | ?         |
+| AAL Stored In        | Implicit                       | Part of LB                     | Part of ledger channel                        | ?         |
+| AAL Dispute Ends By  | Uninstall/Root nonce finalizes | LB outcome finalizes           | ledger channel sends                          | ?         |
+| AAL <-> AA           | AA checks Uninstall/Root nonce | AA checks LB outcome           | Adjudicator checks that app channel is funded | ?         |
+| Inactive App effect  | Uninstall/Root nonce fails     | LB outcome check fails         | app channel is unfunded                       | ?         |
+| UB stored in         | FB                             | Part of LB                     | part of ledger channel                        | ?         |
+| UB effect            | FB executes effect             | LB executes partial (?) effect | ledger channel sends                          | ?         |
 
 # Terminology: AAL, LB, UB, ledger channel, free balance
 
@@ -32,3 +32,17 @@ In all mechanisms, we can abstractly say that there is some mechanism for the bl
 ```
 [ AAL ] <----> [ AA ]
 ```
+
+# cf-now registries
+
+NonceRegistry: owner -> salt -> timeout -> bytes32
+OutcomeRegistry: owner -> signingKeys -> appDefinition -> defaultTimeout -> bytes
+
+# cf-next registries
+
+OutcomeRegistry: owner -> signingKeys -> appDefinition -> defaultTimeout -> bytes
+LedgerBalanceRegistry: owner -> (beneficiary | someKindOfAppInstanceId) -> assetType -> amount
+
+# nitro registries
+
+TBD
