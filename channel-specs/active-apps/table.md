@@ -35,14 +35,20 @@ In all mechanisms, we can abstractly say that there is some mechanism for the bl
 
 # cf-now registries
 
+```
 NonceRegistry: owner -> salt -> timeout -> bytes32
 OutcomeRegistry: owner -> signingKeys -> appDefinition -> defaultTimeout -> bytes
+```
 
 # cf-next registries
 
+```
 OutcomeRegistry: owner -> signingKeys -> appDefinition -> defaultTimeout -> bytes
 LedgerBalanceRegistry: owner -> (beneficiary | someKindOfAppInstanceId) -> assetType -> amount
+```
 
 # nitro registries
 
+```
 TBD
+```
