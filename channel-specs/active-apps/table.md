@@ -36,8 +36,9 @@ In all mechanisms, we can abstractly say that there is some mechanism for the bl
 # cf-now registries
 
 ```
-NonceRegistry: owner -> salt -> timeout -> bytes32
-OutcomeRegistry: owner -> signingKeys -> appDefinition -> defaultTimeout -> bytes
+RootNonceRegistry: owner -> salt -> timeout -> finalizesAt -> value
+UninstallNonceRegistry: owner -> salt -> finalizesAt -> value
+ChallengeRegistry.sol/appOutcomes: owner -> signingKeys -> appDefinition -> defaultTimeout -> bytes
 ```
 
 # cf-next registries
@@ -50,5 +51,6 @@ LedgerBalanceRegistry: owner -> (beneficiary | someKindOfAppInstanceId) -> asset
 # nitro registries
 
 ```
-TBD
+NitroAdjudicator/holdings: (address | owners[] -> nonce) -> amount
+NitroAdjudicator/outcome: (address | owners[] -> nonce) -> Outcome (what is this)
 ```
