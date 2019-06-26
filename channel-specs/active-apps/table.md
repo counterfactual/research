@@ -41,6 +41,8 @@ UninstallNonceRegistry: owner -> salt -> finalizesAt -> value
 ChallengeRegistry.sol/appOutcomes: owner -> signingKeys -> appDefinition -> defaultTimeout -> bytes
 ```
 
+The first four fields in ChallengeRegistry (`owner -> signingKeys -> appDefinition -> defaultTimeout`) are hashed to form the appIdentityHash.
+
 # cf-next registries
 
 ```
